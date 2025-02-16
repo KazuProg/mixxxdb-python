@@ -144,3 +144,64 @@ for track in tracks:
 
 session.close()
 ```
+
+### Add a new track
+
+```python
+from mixxxdb import MixxxDB, Library
+
+db = MixxxDB()
+session = db.get_session()
+
+# This is a simplified example of how to add a record to the database.
+# In reality, you'll likely need to add other initial values and records.
+new_track = Library(title="New Track Title", artist="New Artist", album="New Album")
+session.add(new_track)
+session.commit()
+
+print(f"Added track with ID: {new_track.id}")
+
+session.close()
+```
+
+### Update a track
+
+```python
+from mixxxdb import MixxxDB, Library
+
+db = MixxxDB()
+session = db.get_session()
+
+track_to_update = session.query(Library).filter(Library.title == "New Track Title").first()
+
+if track_to_update:
+  track_to_update.album = "Updated Album Name"
+  session.commit()
+  print(f"Updated track with ID: {track_to_update.id}")
+else:
+  print("Track not found.")
+
+session.close()
+```
+
+### Delete a track
+
+```python
+from mixxxdb import MixxxDB, Library
+
+db = MixxxDB()
+session = db.get_session()
+
+# This is a simplified example of how to delete a record to the database.
+# In reality, you'll likely need to delete other initial values and records.
+track_to_delete = session.query(Library).filter(Library.title == "New Track Title").first()
+
+if track_to_delete:
+  session.delete(track_to_delete)
+  session.commit()
+  print(f"Deleted track with ID: {track_to_delete.id}")
+else:
+  print("Track not found.")
+
+session.close()
+```
