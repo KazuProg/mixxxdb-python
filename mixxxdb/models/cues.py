@@ -1,7 +1,7 @@
 from sqlalchemy import Column, Integer, ForeignKey, Text
 from sqlalchemy.ext.declarative import declarative_base
 
-from .track_locations import TrackLocations
+from .library import Library
 
 Base = declarative_base()
 
@@ -9,10 +9,10 @@ Base = declarative_base()
 class Cues(Base):
     __tablename__ = "cues"
     id = Column(Integer, primary_key=True, autoincrement=True)
-    track_id = Column(Integer, ForeignKey(TrackLocations.id))
-    type = Column(Integer, default=0)
-    position = Column(Integer, default=-1)
-    length = Column(Integer, default=0)
-    hotcue = Column(Integer, default=-1)
-    label = Column(Text, default="")
-    color = Column(Integer, default=4294901760)
+    track_id = Column(Integer, ForeignKey(Library.id), nullable=False)
+    type = Column(Integer, default=0, nullable=False)
+    position = Column(Integer, default=-1, nullable=False)
+    length = Column(Integer, default=0, nullable=False)
+    hotcue = Column(Integer, default=-1, nullable=False)
+    label = Column(Text, default="", nullable=False)
+    color = Column(Integer, default=4294901760, nullable=False)
