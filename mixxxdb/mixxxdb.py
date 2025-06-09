@@ -6,7 +6,7 @@ from pathlib import Path
 from typing import Optional, Type, TypeVar
 from contextlib import contextmanager
 
-from sqlalchemy import create_engine, Engine
+from sqlalchemy import create_engine, Engine, text
 from sqlalchemy.orm import sessionmaker, Session
 from sqlalchemy.exc import SQLAlchemyError
 
@@ -55,7 +55,7 @@ class MixxxDB:
             
             # Test connection
             with self.engine.connect() as conn:
-                conn.execute("SELECT 1")
+                conn.execute(text("SELECT 1"))
                 
         except Exception as e:
             raise SQLAlchemyError(f"Failed to connect to database: {e}") from e
