@@ -1,11 +1,11 @@
 from sqlalchemy import Column, Integer, String
-from sqlalchemy.ext.declarative import declarative_base
 
-Base = declarative_base()
+from . import Base
 
 
 class TrackLocations(Base):
     __tablename__ = "track_locations"
+    
     id = Column(Integer, primary_key=True, autoincrement=True)
     location = Column(String(512), unique=True)
     filename = Column(String(512))

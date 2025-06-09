@@ -1,5 +1,10 @@
+"""
+Library model representing the main music library table in Mixxx database.
+"""
+from typing import Optional
+from datetime import datetime
+
 from sqlalchemy import (
-    create_engine,
     func,
     Column,
     Integer,
@@ -8,20 +13,17 @@ from sqlalchemy import (
     BLOB,
     TEXT,
     DateTime,
-    Boolean,
     REAL,
+    ForeignKey,
 )
-from sqlalchemy.orm import sessionmaker
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.schema import ForeignKey
 
+from . import Base
 from .track_locations import TrackLocations
-
-Base = declarative_base()
 
 
 class Library(Base):
     __tablename__ = "library"
+    
     id = Column(Integer, primary_key=True, autoincrement=True)
     artist = Column(String(64))
     title = Column(String(64))

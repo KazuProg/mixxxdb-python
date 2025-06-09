@@ -1,3 +1,10 @@
+from typing import TYPE_CHECKING
+from sqlalchemy.ext.declarative import declarative_base
+
+# 共通のベースクラス
+Base = declarative_base()
+
+# Models
 from .library_hashes import LibraryHashes
 from .playlist_tracks import PlaylistTracks
 from .playlists import Playlists
@@ -20,6 +27,7 @@ from .traktor_playlist_tracks import TraktorPlaylistTracks
 from .traktor_playlists import TraktorPlaylists
 
 __all__ = [
+    "Base",
     "LibraryHashes",
     "PlaylistTracks",
     "Playlists",

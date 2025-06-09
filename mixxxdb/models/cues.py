@@ -1,13 +1,12 @@
 from sqlalchemy import Column, Integer, ForeignKey, Text
-from sqlalchemy.ext.declarative import declarative_base
 
+from . import Base
 from .library import Library
-
-Base = declarative_base()
 
 
 class Cues(Base):
     __tablename__ = "cues"
+    
     id = Column(Integer, primary_key=True, autoincrement=True)
     track_id = Column(Integer, ForeignKey(Library.id), nullable=False)
     type = Column(Integer, default=0, nullable=False)
