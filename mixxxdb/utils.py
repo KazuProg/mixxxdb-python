@@ -4,7 +4,7 @@ Utility functions for Mixxx database path detection.
 import os
 import platform
 from pathlib import Path
-from typing import Union
+from typing import Union, Optional
 
 
 def get_mixxx_settings_dir() -> str:
@@ -72,7 +72,7 @@ def _get_linux_settings_dir() -> str:
     return os.path.join(home_dir, ".mixxx")
 
 
-def get_mixxx_db_path(settings_dir: Union[str, Path, None] = None) -> str:
+def get_mixxx_db_path(settings_dir: Optional[Union[str, Path]] = None) -> str:
     """
     Get the default path to the Mixxx database file.
     
@@ -88,7 +88,7 @@ def get_mixxx_db_path(settings_dir: Union[str, Path, None] = None) -> str:
     return os.path.join(str(settings_dir), "mixxxdb.sqlite")
 
 
-def verify_mixxx_db_exists(db_path: Union[str, Path, None] = None) -> bool:
+def verify_mixxx_db_exists(db_path: Optional[Union[str, Path]] = None) -> bool:
     """
     Verify that the Mixxx database file exists.
     

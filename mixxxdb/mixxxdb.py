@@ -3,7 +3,7 @@ Mixxx database connection and management.
 """
 import os
 from pathlib import Path
-from typing import Optional
+from typing import Optional, List
 from contextlib import contextmanager
 
 from sqlalchemy import create_engine, Engine, text
@@ -87,7 +87,7 @@ class MixxxDB:
         finally:
             session.close()
     
-    def get_all_tracks(self) -> list[Library]:
+    def get_all_tracks(self) -> List[Library]:
         """Get all tracks from the library."""
         with self.session_scope() as session:
             return session.query(Library).all()
@@ -97,12 +97,12 @@ class MixxxDB:
         with self.session_scope() as session:
             return session.query(Library).filter(Library.id == track_id).first()
     
-    def get_tracks_by_artist(self, artist: str) -> list[Library]:
+    def get_tracks_by_artist(self, artist: str) -> List[Library]:
         """Get all tracks by a specific artist."""
         with self.session_scope() as session:
             return session.query(Library).filter(Library.artist.ilike(f"%{artist}%")).all()
     
-    def get_all_crates(self) -> list[Crates]:
+    def get_all_crates(self) -> List[Crates]:
         """Get all crates."""
         with self.session_scope() as session:
             return session.query(Crates).all()
@@ -112,7 +112,7 @@ class MixxxDB:
         with self.session_scope() as session:
             return session.query(Crates).filter(Crates.name == name).first()
     
-    def get_all_playlists(self) -> list[Playlists]:
+    def get_all_playlists(self) -> List[Playlists]:
         """Get all playlists.""" 
         with self.session_scope() as session:
             return session.query(Playlists).all()
