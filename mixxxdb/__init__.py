@@ -20,37 +20,31 @@ __version__ = "1.39.0"
 __author__ = "KazuProg"
 
 __all__ = [
-    # Main database class
+    # Main classes and utilities
+    "Base",
     "MixxxDB",
-    
-    # Utility functions
     "get_mixxx_db_path",
-    "get_mixxx_settings_dir", 
+    "get_mixxx_settings_dir",
     "verify_mixxx_db_exists",
     
-    # Base class
-    "Base",
-    
-    # Core models
-    "Library",
-    "TrackLocations",
+    # Database models
     "Crates",
     "CrateTracks",
+    "Cues",
+    "Directories",
+    "iTunesLibrary",
+    "iTunesPlaylistTracks",
+    "iTunesPlaylists",
+    "Library",
+    "LibraryHashes",
     "Playlists",
     "PlaylistTracks",
-    "Cues",
-    "Settings",
-    "Directories",
-    "LibraryHashes",
-    "TrackAnalysis",
-    
-    # External library models
-    "iTunesLibrary",
-    "iTunesPlaylistTracks", 
-    "iTunesPlaylists",
     "RhythmboxLibrary",
     "RhythmboxPlaylistTracks",
     "RhythmboxPlaylists",
+    "Settings",
+    "TrackAnalysis",
+    "TrackLocations",
     "TraktorLibrary",
     "TraktorPlaylistTracks",
     "TraktorPlaylists",

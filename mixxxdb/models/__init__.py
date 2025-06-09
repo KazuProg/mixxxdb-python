@@ -1,4 +1,3 @@
-from typing import TYPE_CHECKING
 from sqlalchemy.ext.declarative import declarative_base
 
 # 共通のベースクラス

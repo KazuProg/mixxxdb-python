@@ -3,18 +3,15 @@ Mixxx database connection and management.
 """
 import os
 from pathlib import Path
-from typing import Optional, Type, TypeVar
+from typing import Optional
 from contextlib import contextmanager
 
 from sqlalchemy import create_engine, Engine, text
 from sqlalchemy.orm import sessionmaker, Session
 from sqlalchemy.exc import SQLAlchemyError
 
-from .models import Base, Library, Crates, Playlists, TrackLocations
+from .models import Library, Crates, Playlists
 from .utils import get_mixxx_db_path
-
-# Type variable for generic model types
-ModelType = TypeVar('ModelType', bound=Base)
 
 
 class MixxxDB:
